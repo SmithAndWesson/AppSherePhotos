@@ -35,7 +35,7 @@ public class ImageController {
     return new ResponseEntity<>(new MessageResponse("Image uploaded succefully."), HttpStatus.OK);
   }
 
-  @PostMapping("/{postId}/upload")
+  @PostMapping("/{postId}/upload")//postId
   public ResponseEntity<MessageResponse> uploadImageToPost(@PathVariable("postId") String postId,
       @RequestParam("file") MultipartFile file, Principal principal) throws IOException {
     imageUploadService.uploadImageToPost(file, principal, Long.parseLong(postId));

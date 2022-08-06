@@ -49,7 +49,7 @@ public class CommentController {
     return new ResponseEntity<>(createdCommentDTO, HttpStatus.OK);
   }
 
-  @GetMapping("/{postID}/all")
+  @GetMapping("/{postId}/all")
   public ResponseEntity<List<CommentDTO>> getAllCommentsForPost(@PathVariable("postId") String postId){
     List<CommentDTO> commentDTOList = commentService.getAllCommentsForPost(Long.parseLong(postId))
         .stream()
