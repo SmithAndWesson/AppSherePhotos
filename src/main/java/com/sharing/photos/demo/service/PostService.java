@@ -67,16 +67,16 @@ public class PostService {
     Post post = postRepository.findById(postId).
         orElseThrow(() -> new PostNotFoundException("Post can not be found"));
 
-    Optional<String> userLiked = post.getLikedUsers()
+    Optional<String> userLiked = post.getUsersLiked()
         .stream()
         .filter(u -> u.equals(username))
         .findAny();
     if (userLiked.isPresent()) {
       post.setLikes(post.getLikes() - 1);
-      post.getLikedUsers().remove(username);
+      post.getUsersLiked().remove(username);
     } else {
       post.setLikes(post.getLikes() + 1);
-      post.getLikedUsers().add(username);
+      post.getUsersLiked().add(username);
     }
 
     return postRepository.save(post);
