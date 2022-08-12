@@ -50,6 +50,9 @@ public class UserService {
     user.setName(userDTO.getFirstname());
     user.setLastname(userDTO.getLastname());
     user.setBio(userDTO.getBio());
+    user.setUsername(userDTO.getUsername());
+    user.setEmail(userDTO.getEmail());
+
     return userRepository.save(user);
   }
 
