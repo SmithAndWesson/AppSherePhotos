@@ -75,7 +75,11 @@ public class PostService {
       post.setLikes(post.getLikes() - 1);
       post.getUsersLiked().remove(username);
     } else {
-      post.setLikes(post.getLikes() + 1);
+      if(post.getLikes() != null) {
+        post.setLikes(post.getLikes() + 1);
+      }else{
+        post.setLikes(1);
+      }
       post.getUsersLiked().add(username);
     }
 
