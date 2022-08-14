@@ -37,7 +37,8 @@ public class CommentService {
   public Comment saveComment(Long postId, CommentDTO commentDTO, Principal principal) {
 
     User user = getUserByPrincipal(principal);
-    Post post = postRepository.findPostByIdAndUser(postId, user)
+//    Post post = postRepository.findPostByIdAndUser(postId, user)
+    Post post = postRepository.findPostById(postId)
         .orElseThrow(
             () -> new PostNotFoundException("Post can not be found for user : " + user.getEmail()));
     Comment comment = new Comment();
